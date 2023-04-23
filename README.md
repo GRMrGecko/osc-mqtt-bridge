@@ -83,7 +83,6 @@ Topic: osc/behringer_wing/send/?<br/>
 Payload:
 
 ## Build
-
 ```bash
 go build
 ```
@@ -91,7 +90,6 @@ go build
 [Golang](https://go.dev/) 1.19 and below are known to have issues, 1.20 works.
 
 ## Config file location
-
 Same directory as the binary, in your home directory at `~/.config/osc-mqtt-bridge/config.yaml`, or under etc at `/etc/osc-mqtt-bridge/config.yaml`.
 
 ## Docker
