@@ -12,7 +12,7 @@ relays:
     mqtt_topic: osc/behringer_wing
     osc_host: 10.0.0.3
     osc_port: 2223
-    osc_bind_addr: 10.0.0.4 # Change to this machine's IP address. Expected to be a static IP.
+    osc_bind_addr: 0.0.0.0
     log_level: 2
 ```
 
@@ -40,7 +40,7 @@ relays:
 - `osc_port`: Port for OSC client connection.
 - `osc_bind_addr`: Bind address of the OSC server.
 
-    To have bidirectional mode, you must specify at least this, OscHost, and OscPort defined. You must specify the unicast IP address, cannot be `0.0.0.0`.
+    To have bidirectional mode, you must specify at least this, OscHost, and OscPort defined.
 
 - `osc_bind_port`: Port of the OSC server. Defaults to OscPort if specified.
 - `osc_disallow_arbritary_command`: Disallows pushing to arbritary commands to the cmd topic.
@@ -92,4 +92,31 @@ go build
 
 ## Config file location
 
-Same directory as the binary, in your home directory at `~/.config/mqtt-osc-bridge/config.yaml`, or under etc at `/etc/mqtt-osc-bridge/config.yaml`.
+Same directory as the binary, in your home directory at `~/.config/osc-mqtt-bridge/config.yaml`, or under etc at `/etc/osc-mqtt-bridge/config.yaml`.
+
+## Docker
+I have made docker images for this product as I use docker for home assistant in my environment and wanted to keep with the existing scheme for services that are used with home assistant.
+
+### Build Image
+```bash
+docker build --tag osc-mqtt-bridge .
+```
+
+### Run
+```bash
+docker run --volume ./config:/etc/osc-mqtt-bridge --publish 2223:2223/udp osc-mqtt-bridge
+```
+
+### Docker compose
+```yaml
+version: '2.3'
+
+services:
+  postgres:
+    image: grmrgecko/osc-mqtt-bridge:latest
+    restart: unless-stopped
+    volumes:
+      - ./config:/etc/osc-mqtt-bridge
+    ports:
+      - "2223:2223/udp"
+```

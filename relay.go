@@ -87,7 +87,6 @@ type Relay struct {
 	OscPort int `yaml:"osc_port" json:"osc_port"`
 	// OscBindAddr: Bind address of the OSC server.
 	// To have bidirectional mode, you must specify at least this, OscHost, and OscPort defined.
-	// You must specify the unicast IP address, cannot be 0.0.0.0.
 	OscBindAddr string `yaml:"osc_bind_addr" json:"osc_bind_addr"`
 	// OscBindPort: Port of the OSC server. Defaults to OscPort if specified.
 	OscBindPort int `yaml:"osc_bind_port" json:"osc_bind_port"`

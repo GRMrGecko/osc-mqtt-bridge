@@ -24,8 +24,8 @@ func (a *App) ReadConfig() {
 
 	// Configuration paths.
 	localConfig, _ := filepath.Abs("./config.yaml")
-	homeDirConfig := usr.HomeDir + "/.config/mqtt-osc-bridge/config.yaml"
-	etcConfig := "/etc/mqtt-osc-bridge/config.yaml"
+	homeDirConfig := usr.HomeDir + "/.config/osc-mqtt-bridge/config.yaml"
+	etcConfig := "/etc/osc-mqtt-bridge/config.yaml"
 
 	// Determine which configuration to use.
 	var configFile string
