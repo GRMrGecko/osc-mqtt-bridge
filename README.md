@@ -110,7 +110,7 @@ docker run --volume ./config:/etc/osc-mqtt-bridge --publish 2223:2223/udp osc-mq
 version: '2.3'
 
 services:
-  postgres:
+  osc-mqtt-bridge:
     image: grmrgecko/osc-mqtt-bridge:latest
     restart: unless-stopped
     volumes:
